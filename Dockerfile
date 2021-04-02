@@ -11,6 +11,7 @@ FROM nginx:1.17.9
 COPY site.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
 RUN chmod -R 777 /usr/share/nginx/html
+RUN chmod -R 777 /etc/nginx/conf.d/
 #RUN --from=build cp -r /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 80
 
