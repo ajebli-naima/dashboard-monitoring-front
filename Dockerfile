@@ -10,7 +10,7 @@ RUN npm run build
 FROM nginx:1.17.9
 COPY site.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist /usr/share/nginx/html
-RUN chmod -R 777 /var/log/nginx /var/cache/nginx/
+RUN chmod -R 777 /var/*
 RUN chmod -R 777 /etc/nginx/*
 #RUN --from=build cp -r /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 80
