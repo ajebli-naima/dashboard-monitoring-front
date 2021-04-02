@@ -9,7 +9,7 @@ RUN npm run build
 ### STAGE 2: Run ###
 FROM nginx:1.17.9
 COPY site.conf /etc/nginx/conf.d/default.conf
-COPY --from=build /usr/src/app/dist /usr/share/nginx/html
+COPY --from=build /usr/src/app/dist/fuse /var/www/html/dashboard
 RUN chmod -R 777 /var/*
 RUN chmod -R 777 /etc/nginx/*
 #RUN --from=build cp -r /usr/src/app/dist /usr/share/nginx/html
