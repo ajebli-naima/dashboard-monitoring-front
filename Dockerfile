@@ -12,6 +12,11 @@ COPY site.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /usr/src/app/dist/fuse /var/www/html/dashboard
 RUN chmod -R 777 /var/*
 RUN chmod -R 777 /etc/nginx/*
+
+RUN chgrp -R 0 /var/cache/ /var/log/ /var/run/ && \
+    chmod -R g=u /var/cache/ /var/log/ /var/run/
+
 #RUN --from=build cp -r /usr/src/app/dist /usr/share/nginx/html
 EXPOSE 80
 
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
