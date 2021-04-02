@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://dashboard-monitoring-back:8080",
+    "target": "http://frontend-test3.127.0.0.1.nip.io",
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
