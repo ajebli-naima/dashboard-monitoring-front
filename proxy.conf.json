@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "http://frontend-test3.127.0.0.1.nip.io",
+    "target": "http://localhost:8080",
     "secure": true,
     "changeOrigin": true,
     "pathRewrite": {
