@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: dashboard-monitoring-front
+  name: dashboard-monitoring-front
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dashboard-monitoring-front
+  template:
+    metadata:
+      labels:
+        app: dashboard-monitoring-front
+    spec:
+      containers:
+        - image: quay.io/openshift-pipeline/dashboard-monitoring-front:latest
+          imagePullPolicy: Always
+          name: dashboard-monitoring-front
+          ports:
+            - containerPort: 80
+              protocol: TCP
+          env:
+            - name: VOTING_API_SERVICE_HOST
+              value: dashboard-monitoring-back
+            - name: VOTING_API_SERVICE_PORT
+              value: "8080"
