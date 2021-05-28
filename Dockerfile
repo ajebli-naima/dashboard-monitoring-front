@@ -1,5 +1,5 @@
 ### STAGE 1: Build ###
-FROM node:12.7-alpine AS builder
+FROM node:12.7-alpine AS build
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
@@ -9,7 +9,7 @@ RUN npm run-script build-prod
 ### STAGE 2: Run ###
 FROM nginx:1.17.9
 COPY site.conf /etc/nginx/conf.d/default.conf
-COPY --from=builder /usr/src/app/dist/fuse /var/www/html/dashboard
+COPY --from=build /usr/src/app/dist/fuse /var/www/html/dashboard
 RUN chmod -R 777 /var/*
 RUN chmod -R 777 /etc/nginx/*
 
